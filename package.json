@@ -5,6 +5,7 @@
   "type": "module",
   "scripts": {
     "dev": "bun --hot src/index.ts",
+    "load": "bun run src/scripts/LoadCollection.ts",
     "start": "NODE_ENV=production bun src/index.ts",
     "build": "bun run build.ts"
   },
@@ -15,6 +16,7 @@
     "bun-plugin-tailwind": "^0.1.2",
     "class-variance-authority": "^0.7.1",
     "clsx": "^2.1.1",
+    "csv-simple-parser": "^2.0.2",
     "lucide-react": "^0.545.0",
     "react": "^19",
     "react-dom": "^19",
