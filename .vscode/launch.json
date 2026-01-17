@@ -1,0 +1,21 @@
+{
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "type": "bun",
+      "internalConsoleOptions": "neverOpen",
+      "request": "attach",
+      "name": "[Bun] Attach Bun",
+      "url": "ws://localhost:6499/",
+      "stopOnEntry": false
+    },
+    {
+      "name": "Launch Floorp (Firefox debugger)",
+      "type": "firefox",
+      "request": "launch",
+      "url": "http://localhost:3000",
+      "webRoot": "${workspaceFolder}/src",
+      "firefoxExecutable": "C:\\Program Files\\Floorp\\floorp.exe"
+    }
+  ]
+}

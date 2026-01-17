@@ -1,4 +1,5 @@
 import { serve } from "bun";
+import { Database } from "bun:sqlite";
 import index from "@/static/index.html";
 
 const server = serve({
@@ -26,6 +27,31 @@ const server = serve({
       return Response.json({
         message: `Hello, ${name}!`,
       });
+    },
+
+    "/api/games": {
+      async GET(req) {
+        let db: Database | null = null;
+        try {
+          db = new Database("./src/data/boardgame-library.sqlite", { create: false, strict: true });
+
+          const stmt = db.prepare("SELECT gameid, name, completed FROM boardgame");
+          const results = stmt.all() as Array<{ gameid: number; name: string; completed: boolean }>;
+
+          if (!results || results.length === 0) {
+            return Response.json([]);
+          }
+
+          return Response.json(results);
+        } catch (err) {
+          return new Response(JSON.stringify({ error: String(err), stack: err instanceof Error ? err.stack : null }), { status: 500 });
+        }
+        finally {
+          if (db) {
+            db.close();
+          }
+        }
+      },
     },
   },
 
