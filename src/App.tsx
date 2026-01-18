@@ -3,6 +3,8 @@ import { APITester } from "./components/APITester";
 import "@/static/index.css";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { ReactQueryDevtools } from '@tanstack/react-query-devtools'
+import { useGetGames } from "./queries/games";
+import { GameDisplay } from "./components/GameDisplay";
 
 const queryClient = new QueryClient();
 // This code is only for TypeScript
@@ -26,8 +28,7 @@ export function App() {
           <CardHeader className="gap-4">
             <CardTitle className="text-3xl font-bold">Bun + React</CardTitle>
             <CardDescription>
-              Edit <code className="rounded bg-muted px-[0.3rem] py-[0.2rem] font-mono">src/App.tsx</code> and save to
-              test HMR
+              <GameDisplay />
             </CardDescription>
           </CardHeader>
           <CardContent>
