@@ -12,6 +12,6 @@ export function GameDisplay() {
     const games = gamesQuery.data;
 
     return (
-        <div>There are a total of {games.length} games in the library.</div>
+        <div>There are a total of {games?.length} games in the library.</div>
     );
 }

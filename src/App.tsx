@@ -4,7 +4,7 @@ import "@/static/index.css";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { ReactQueryDevtools } from '@tanstack/react-query-devtools'
 import { useGetGames } from "./queries/games";
-import { GameDisplay } from "./components/GameDisplay";
+import { GameDisplay } from "./components/GameList";
 
 const queryClient = new QueryClient();
 // This code is only for TypeScript
