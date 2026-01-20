@@ -1,10 +1,11 @@
 import { useGetGames } from "@/queries/games";
-import { Input } from "./ui/input";
+import { Input } from "../ui/input";
 import Fuse from "fuse.js";
 import { useState, useMemo } from "react";
-import { Checkbox } from "./ui/checkbox";
-import { Button } from "./ui/button";
+import { Checkbox } from "../ui/checkbox";
+import { Button } from "../ui/button";
 import { toast } from "sonner";
+import { Pagination, PaginationContent } from "../ui/pagination";
 
 export function GameList() {
   const gamesQuery = useGetGames();
@@ -64,6 +65,9 @@ export function GameList() {
         ) : (
           <div>No games found.</div>
         )}
+        <Pagination>
+          <PaginationContent></PaginationContent>
+        </Pagination>
       </div>
     </div>
   );
