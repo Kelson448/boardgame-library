@@ -6,6 +6,7 @@ import { Checkbox } from "../ui/checkbox";
 import { Button } from "../ui/button";
 import { toast } from "sonner";
 import { Pagination, PaginationContent } from "../ui/pagination";
+import { GameListTable } from "./GameListTable";
 
 export function GameList() {
   const gamesQuery = useGetGames();
@@ -45,29 +46,7 @@ export function GameList() {
       </div>
       <div>Found {filteredGames?.length || 0} games</div>
       <div className="mt-4 space-y-2">
-        {filteredGames && filteredGames.length > 0 ? (
-          filteredGames.map((game) => (
-            <div key={game.gameid} className="border p-2 rounded">
-              <Button
-                variant="outline"
-                onClick={() => {
-                  navigator.clipboard.writeText(
-                    `https://app.bgstatsapp.com/addPlay.html?gameId=${game.gameid}`
-                  );
-                  toast.success(`Copied link for "${game.name}" to clipboard!`);
-                }}
-              >
-                {game.name}
-              </Button>{" "}
-              {game.completed ? "✅" : "❌"}
-            </div>
-          ))
-        ) : (
-          <div>No games found.</div>
-        )}
-        <Pagination>
-          <PaginationContent></PaginationContent>
-        </Pagination>
+        <GameListTable data={filteredGames || []} />
       </div>
     </div>
   );
