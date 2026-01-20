@@ -11,6 +11,8 @@ import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
 import { useGetGames } from "./queries/games";
 import { GameLibraryDisplay } from "./components/GameLibraryDisplay";
+import { GameList } from "./components/GameList";
+import { Toaster } from "./components/ui/sonner";
 
 const queryClient = new QueryClient();
 // This code is only for TypeScript
@@ -37,9 +39,13 @@ export function App() {
               <GameLibraryDisplay />
             </CardDescription>
           </CardHeader>
-          <CardContent>{/* <APITester /> */}</CardContent>
+          <CardContent>
+            {/* <APITester /> */}
+            <GameList />
+          </CardContent>
         </Card>
       </div>
+      <Toaster />
       <ReactQueryDevtools initialIsOpen={false} />
     </QueryClientProvider>
   );
